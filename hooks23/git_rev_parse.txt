@@ -1,0 +1,8 @@
+git rev-parse
+- utilized for getting the SHA hashes of branches (or) HEAD
+- "git rev-parse" can be used in bash files
+
+
+git rev-parse --abbrev-ref HEAD                 // to know the current branch
+git rev-parse origin/main                       // to know SHA of remote
+git rev-parse HEAD

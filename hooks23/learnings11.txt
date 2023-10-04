@@ -1,0 +1,10 @@
+2>&1
+
+File descriptor 1 is the standard output (stdout)
+File descriptor 2 is the standard error (stderr)
+
+2>1
+- seems like "redirect stderr to stdout"
+- but in reality, its "redirect stderr to a file named 1"
+
+so, we use 2>&1

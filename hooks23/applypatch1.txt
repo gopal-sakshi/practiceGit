@@ -1,0 +1,8 @@
+learning git hooks
+removed_white_space
+patches ???             not much use... invoked by git-am
+a) applypatch-msg
+b) pre-applypatch
+c) post-applypatch
+
+--------------------------------------------------

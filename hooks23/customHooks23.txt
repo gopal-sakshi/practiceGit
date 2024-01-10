@@ -3,3 +3,13 @@ so they arent part of repository (cant be pushed to remote)
 so, use customHooks instead
 
 git config core.hooksPath hooks24
+==========================
+
+make any change;
+git commit -m "learning hooks 222"
+now notice the terminal ---> 
+    global email23, 
+    project email23
+    path23
+will be logged in console
+==========================

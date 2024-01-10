@@ -1,0 +1,5 @@
+by default, hooks are in .git folder
+so they arent part of repository (cant be pushed to remote)
+so, use customHooks instead
+
+git config core.hooksPath hooks24

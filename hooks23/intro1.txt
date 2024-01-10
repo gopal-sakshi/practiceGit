@@ -1,0 +1,21 @@
+learning git hooks
+removed_white_space
+patches ???             not much use... invoked by git-am
+a) applypatch-msg
+b) pre-applypatch
+c) post-applypatch
+
+--------------------------------------------------
+
+pre-commit
+- throws error, if there are trailing whitespaces
+- just run "git commit"
+- if no trailing whitespaces --> it prompts for commit message
+    git diff-index --check --cached HEAD --
+--------------------------------------------------
+
+pre-merge-commit
+- invoked by "git merge"
+- this hook is run after merge is completed successfully
+
+--------------------------------------------------

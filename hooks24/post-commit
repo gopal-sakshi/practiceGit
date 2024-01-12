@@ -1,0 +1,10 @@
+#!/bin/bash
+unset GIT_INDEX_FILE
+git --work-tree=/var/www/html/practiceGit23 --git-dir=$HOME/Desktop/repos23/others/practiceGit/.git checkout -f
+
+# read postHook23.txt
+
+#### RUN THIS to make script executable
+# chmod +x .git/hooks/post-commit
+# chmod +x hooks24/post-commit
+#### RUN THIS to make script executable

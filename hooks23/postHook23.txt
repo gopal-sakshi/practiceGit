@@ -1,0 +1,22 @@
+unset GIT_INDEX_FILE
+git --work-tree=/var/www/html --git-dir=$HOME/proj/.git checkout -f
+
+In the following line, you need to look closely at the environmental variables that are set each time the post-commit hook is called. In particular, the GIT_INDEX_FILE is set to .git/index.
+
+This path is in relation to the working directory, which in this case is /var/www/html. 
+Since the git index does not exist at this location, the script will fail if you leave it as-is. 
+To avoid this situation, you can manually unset the variable.
+
+After that, you are just going to 
+    use git itself to unpack the newest version of the repository after the commit, into your web directory. 
+You will want to force this transaction to make sure this is successful each time.
+
+
+
+sudo chown -R `whoami`:`id -gn` /var/www/html
+you need to give normal user permission to modify /var/www/html 
+
+What are these
+    id
+    id -gn
+

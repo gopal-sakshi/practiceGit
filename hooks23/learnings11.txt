@@ -12,3 +12,8 @@ so, we use 2>&1
 ===================================
 
 git var -l      // prints git variables
+
+===================================
+
+https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks
+https://www.digitalocean.com/community/tutorials/how-to-use-git-hooks-to-automate-development-and-deployment-tasks

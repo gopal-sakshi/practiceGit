@@ -8,3 +8,7 @@ File descriptor 2 is the standard error (stderr)
 - but in reality, its "redirect stderr to a file named 1"
 
 so, we use 2>&1
+
+===================================
+
+git var -l      // prints git variables

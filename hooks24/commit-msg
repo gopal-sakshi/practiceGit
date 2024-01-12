@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+## the permissions of hook file is also important
+## hook was ignored because it's not set as executable
+## right permissions ===> -rw-rw-r--
+
+INPUT_FILE=$1
+START_LINE=`head -n1 $INPUT_FILE`
+# PATTERN="^(MYPROJ)-[[:digit:]]+: "
+
+
+############### RESPONSE ################
+echo " inputfile23 ===> $INPUT_FILE"
+echo " startLine23 ===> $START_LINE"
+
+###             git commit -m "commit-msg23"
+###                 inputfile23 ===> .git/COMMIT_EDITMSG
+###                 startLine23 ===> commit-msg23       (this is the commitMsg I gave)
+############### RESPONSE ################
+
+echo " addingStuffTo commitMsg ===> "
+signed23=$(git var GIT_AUTHOR_IDENT | sed -n 's/^\(.*>\).*$/Signed-off-by: \1/p')
+# echo "+ _usa_ + $signed23 + _spain_ + $START_LINE + _germany_" >> $1
+echo "$signed23" >> $1
+# echo "america23 " >> $1           # appends america23 to commitMsg
+# echo "america23 " > $1           # replaces commitMsg with " america23"
+exit 0
+

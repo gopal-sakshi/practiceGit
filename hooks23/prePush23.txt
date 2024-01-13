@@ -1,0 +1,19 @@
+git push <remote_repository> <local_branch>:<remote_branch>
+
+git push origin feature23:main
+- pushes local branch "feature23" into remote "main" branch
+
+
+git push origin feature23
+- pushes local branch "feature23" into remote "feature23" branch
+==============================================================
+
+
+for some reason...
+"git push" (or) specifically "pre-push" hook gets 4 arguments
+- It runs after commit is made... but before commit is pushed into origin
+
+local_ref 
+local_oid 
+remote_ref 
+remote_oid

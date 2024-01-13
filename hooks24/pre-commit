@@ -7,8 +7,10 @@
 PWD=`pwd`
 globalEmail=`git config --global --get user.email`
 projectEmail=`git config --get user.email`
+userName23=`git config user.name`
 
-echo "Global email23: "$globalEmail""
+echo "Global email23: $globalEmail"
 echo "project email23: $projectEmail"
+echo "userName $userName23"
 echo "path23 ==> $PWD"
 exit 0

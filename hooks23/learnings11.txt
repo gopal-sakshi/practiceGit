@@ -19,9 +19,46 @@ https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks
 https://www.digitalocean.com/community/tutorials/how-to-use-git-hooks-to-automate-development-and-deployment-tasks
 
 
-===================================
+======================================================================
 How to setup server-side hooks
 - You ssh to server with your repository and put required file into .git/hooks folder
+- you need to see, practiceGitLocalRemote repository
+- we are only using/learning 3 server-side hooks
+    pre-receive ====> triggered when we push to server
+    update =========> triggered for each branch you have pushed
+    post-receive ===> truggered after pre-receive & update
 
+If the pusher is trying to push to multiple branches, 
+pre-receive runs only once, whereas update runs once per branch they’re pushing to
 
-===================================
+======================================================================
+
+refusing to update checked out branch: refs/heads/main
+- trying to push code to remote non-bare repository throws ERROR
+- bcoz, remote non-bare repository ===> it has different code currently chekced out in working directory
+- so, you cant push to "currenly checked out" branch on remote
+- you can push to "main23" branch instead
+    git push origin main:main           // cant update currently checked out branch
+    git push origin main:main23         // WORKS
+
+WHAT TO DO (Approach I)
+- simply convert your remote repo to bare repository
+- there will be no working copy in bare repository
+    no code files, nothing... only .git folder
+- but .git folder remembers everything
+- so, if u clone from this bare repository in remote machine
+    that "cloned repo" from this bare repository will have all the code files & stuff
+
+WHAT TO DO (Approach II)
+- simply chcekout to a dummy branch in remote
+- push to that dummy branch
+- merge main branch with dummy branch
+- delete that dummy branch
+
+use this in prereceive hook
+    git checkout -b dummy23
+    git 
+
+WHAT TO DO (Approach III)
+- git config receive.denyCurrentBranch=updateInstead
+==================================================================

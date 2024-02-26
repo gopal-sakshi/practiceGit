@@ -6,6 +6,12 @@ git push origin feature23:main
 
 git push origin feature23
 - pushes local branch "feature23" into remote "feature23" branch
+
+git push origin --all
+- pushes multiple branches at once to remote
+
+git push origin branch1 branch2 
+- pushes local branches "branch1" & "branch2"
 ==============================================================
 
 
@@ -17,3 +23,18 @@ local_ref
 local_oid 
 remote_ref 
 remote_oid
+
+==============================================================
+git push localOrigin main
+
+This is the output
+    remote & url ===> localOrigin , file:///home/gsakshi/Desktop/repos23/others/practiceGitLocalRemote 
+    
+    local_ref, local_oid, remote_ref, remote_oid
+        'refs/heads/main' 
+        '549860846c9a4638873c27b403c824c174d84b64'          (latest commit made on local branch)
+        'refs/heads/main' 
+        'ac882edcd5ed1ceeab25511766a4d9e9bfb25007'          (the commit localOrigin/main branch is at)
+    
+    existing branch ===> ac882edcd5ed1ceeab25511766a4d9e9bfb25007..549860846c9a4638873c27b403c824c174d84b64
+    all looks fine

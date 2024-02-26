@@ -46,8 +46,11 @@ WHAT TO DO (Approach I)
 - there will be no working copy in bare repository
     no code files, nothing... only .git folder
 - but .git folder remembers everything
-- so, if u clone from this bare repository in remote machine
+    (A) so, if u clone from this bare repository in remote machine
     that "cloned repo" from this bare repository will have all the code files & stuff
+    (B) or in the "bareRepo"... use post-receive hook to update "nonBareRepo" sitting beside "bareRepo"
+    git --work-tree=nonBareRepo --git-dir=bareRepoGitFolder checkout -f branchName
+    this will update the nonBareRepo in remoteServer with latest code...
 
 WHAT TO DO (Approach II)
 - simply chcekout to a dummy branch in remote
@@ -61,4 +64,7 @@ use this in prereceive hook
 
 WHAT TO DO (Approach III)
 - git config receive.denyCurrentBranch=updateInstead
+- here, though commit head points to keeps changing (along with other files in .git)
+    but your working tree will remain the same
+- not preferred ???
 ==================================================================

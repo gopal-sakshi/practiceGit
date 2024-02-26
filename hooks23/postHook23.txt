@@ -1,18 +1,39 @@
-unset GIT_INDEX_FILE
-git --work-tree=/var/www/html --git-dir=$HOME/proj/.git checkout -f
+a) unset GIT_INDEX_FILE
+b) git --work-tree=/var/www/html --git-dir=$HOME/proj/.git checkout -f
 
-In the following line, you need to look closely at the environmental variables that are set each time the post-commit hook is called. In particular, the GIT_INDEX_FILE is set to .git/index.
+==========================================================================================
+git directory
+- /home/gsakshi/backend23/tsLib23/.git
+- where the .git folder is created 
+- here only all git related info is stored ====> config, hooks, objects, refs
 
-This path is in relation to the working directory, which in this case is /var/www/html. 
-Since the git index does not exist at this location, the script will fail if you leave it as-is. 
-To avoid this situation, you can manually unset the variable.
+work tree
+- /home/gsakshi/backend23/tsLib23
+- the root directory of the project
 
-After that, you are just going to 
-    use git itself to unpack the newest version of the repository after the commit, into your web directory. 
-You will want to force this transaction to make sure this is successful each time.
+SUMMARY
+- tsLib23 ==========> work tree
+- .git folder ======> git directory (but this need not be within the same tsLib23 folder) 
+- the git directory generally lies within work tree (but it can also be outside)
 
+==========================================================================================
 
+GIT_INDEX_FILE is set to .git/index.
+- This path is in relation to the working directory, which in this case is /var/www/html. 
+- Since the git index does not exist at this location, the script will fail if you leave it as-is. 
+- To avoid this situation, you can manually unset the variable.
 
+ 
+git --work-tree=blah1 --git-dir=blah2 checkout -f
+- use git itself 
+- to unpack the newest version of the repository after the commit
+- into your web directory. 
+- You will want to force this transaction to make sure this is successful each time.
+- basically, its "git checkout"
+    but work-tree ===========> destination where we want to paste build files; /var/www/html folder
+    and git-dir =============> the source from where we want to copy...
+
+==========================================================================================
 sudo chown -R `whoami`:`id -gn` /var/www/html
 you need to give normal user permission to modify /var/www/html 
 

@@ -9,5 +9,14 @@
             my nginx is listening on 8902 port
             all is well
         </p>
+        <p>
+            <button onclick="makeApiCall31()">api call chesko</button>
+        </p>
+        <script type="text/javascript">
+            async function makeApiCall31() {
+                var res = await fetch('http://localhost:3067');
+                console.log(await res.json());
+            }
+        </script>
     </body>
 </html>

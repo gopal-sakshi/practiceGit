@@ -1,0 +1,32 @@
+#!/bin/bash -e
+
+ENV=development
+WORK_TREE=/home/ubuntu/work/meity_api
+GIT_DIR=/home/ubuntu/repos/meity_api
+
+echo "______________________________post_receive_hook______________________________"
+while read -r oldrev newrev ref
+do
+    echo "post_receive parms ====> $oldrev $newrev $ref" 
+    if [[ $ref =~ .*/master$ ]];
+    then
+        echo "Deploying code ${newrev}:"
+        git --work-tree="${WORK_TREE}" --git-dir="${GIT_DIR}" checkout -f "${newrev}"
+        SHORTREV=$(git rev-parse --short "${newrev}")
+        pushd "${WORK_TREE}" > /dev/null
+        
+        # (git --work-tree="${WORK_TREE}" --git-dir="${GIT_DIR}" diff --name-only "${oldrev}" "${newrev}" | grep 'package.*\.json' &> /dev/null) && npm install
+
+        {
+            echo "$(date --iso-8601=seconds) ${oldrev} ${newrev}"
+            echo "pwd: $PWD"
+            cd packages
+            z/build
+            NODE_ENV="$ENV" z/launch meity-api meity-api ~/logs/deployment_logs 8080 "$ENV" "start-api"
+            NODE_ENV="$ENV" z/launch meity-admin meity-api ~/logs/deployment_logs 8090 "$ENV" "start-admin"
+            echo "--------------------------------------------------------------------------------"
+        } >> /home/ubuntu/logs/deployment_logs/meity-api.log
+
+        popd > /dev/null
+    fi
+done
